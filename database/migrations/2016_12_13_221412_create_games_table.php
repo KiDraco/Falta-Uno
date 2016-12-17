@@ -24,9 +24,6 @@ class CreateGamesTable extends Migration
             $table->dateTime('filled_at')->nullable();
             $table->dateTime('cancelled_at')->nullable();
             $table->timestamps();
-        });
-
-        Schema::table('games', function ($table) {
             $table->foreign('admin_id')->references('id')->on('users');
         });
     }

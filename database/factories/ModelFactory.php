@@ -26,3 +26,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'birthdate' => $faker->date($format = 'Y-m-d', $max = 'now')
     ];
 });
+
+$factory->define(App\Game::class, function (Faker\Generator $faker) {
+    return [
+        'admin_id' => factory(App\User::class)->create()->id,
+        'capacity' => $faker->numberBetween(2,50),
+        'time' => $faker->dateTimeThisMonth($max = 'now'),
+        'type' => $faker->randomElement(['soccer', 'golf', 'volleyball']),
+        'name' => $faker->word
+    ];
+});
